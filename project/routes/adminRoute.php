@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\ManageModuleController;
 use App\Http\Controllers\Admin\ManageTicketController;
 use App\Http\Controllers\Admin\AdminLanguageController;
 use App\Http\Controllers\Admin\CampaignController;
+use App\Http\Controllers\Admin\CampaignSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ManageCountryController;
 use App\Http\Controllers\Admin\ManageDepositController;
@@ -84,6 +85,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('campaign/view/{campaign}',[CampaignController::class,'show'])->name('campaign.show')->middleware('permission:view campaign');
         Route::get('campaign/delete/{campaign}',[CampaignController::class,'destroy'])->name('campaign.delete')->middleware('permission:delete campaign');
         // Campaign Route Ends
+
+
+        // Campaign Setting Controller
+        Route::get('campaign/setting',[CampaignSettingController::class,'setting'])->name('campaign.setting')->middleware('permission:campaign setting');
+        Route::post('campaign/setting',[CampaignSettingController::class,'settingUpdate'])->name('campaign.setting.update')->middleware('permission:campaign setting');
 
 
         // Reward Route start

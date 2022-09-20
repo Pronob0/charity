@@ -47,6 +47,13 @@
        </li>
        {{-- @endif --}}
 
+       
+       @if (access('campaign setting'))
+       <li class="nav-item {{menu('admin.category.list')}}">
+         <a href="{{route('admin.campaign.setting')}}" class="nav-link"><i class="fas fa-cogs"></i><span>@langg('Campaign Setting')</span></a>
+       </li>
+       @endif
+
        {{-- Campaign Ends --}}
 
         
