@@ -55,6 +55,10 @@ class GeneralSettingController extends Controller
         return view('admin.generalsetting.loader');
     }
 
+    public function reward(){
+        return view('admin.generalsetting.reward');
+    }
+
     public function cookie()
     {
         return view('admin.generalsetting.cookie');

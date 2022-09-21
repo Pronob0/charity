@@ -35,8 +35,11 @@ use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\ManageCurrencyController;
 use App\Http\Controllers\Admin\ManageMerchantController;
 use App\Http\Controllers\Admin\PaymentGatewayController;
+use App\Http\Controllers\Admin\ReedemRewardController;
 use App\Http\Controllers\Admin\RewardController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
+use App\Models\ReedemReward;
+
 // ************************** ADMIN SECTION START ***************************//
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -97,6 +100,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
           Route::post('reward/add',[RewardController::class,'store'])->name('reward.store')->middleware('permission:add reward');
           Route::post('reward/update/{id}',[RewardController::class,'update'])->name('reward.update')->middleware('permission:edit reward');
           Route::get('reward/delete/{id}',[RewardController::class,'destroy'])->name('reward.delete')->middleware('permission:delete reward');
+
+        // Reward Route Ends
+
+        // ReedemReward Route Start
+        Route::get('reedem-reward/list',[ReedemRewardController::class,'index'])->name('reward.reedem.list')->middleware('permission:reedem request');
 
         // Gift Route start
         Route::get('gift/list',[GiftController::class,'index'])->name('gift.list')->middleware('permission:gift list');
@@ -199,6 +207,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             Route::get('/general-settings/status/update/{value}', [GeneralSettingController::class,'StatusUpdate'])->name('gs.status')->middleware('permission:general settings status update');
 
+            Route::get('/general-settings/reward', [GeneralSettingController::class,'reward'])->name('reward.gs')->middleware('permission:reward setting');
 
         //==================================== GENERAL SETTING SECTION ==============================================//
 

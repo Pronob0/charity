@@ -30,7 +30,7 @@
        {{--Campaign Start--}}
 
        {{-- @if(access('withdraw method') || access('pending withdraw') || access('accepted withdraw') || access('rejected withdraw')) --}}
-       <li class="nav-item dropdown {{menu('admin.withdraw*')}}">
+       <li class="nav-item dropdown {{menu('admin.campaign*')}}">
          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-hand-holding-usd"></i> <span>@langg('Manage Campaigns')</span></a>
          <ul class="dropdown-menu">
            {{-- @if(access('withdraw method')) --}}
@@ -49,21 +49,43 @@
 
        
        @if (access('campaign setting'))
-       <li class="nav-item {{menu('admin.category.list')}}">
+       <li class="nav-item {{menu('admin.campaign.setting')}}">
          <a href="{{route('admin.campaign.setting')}}" class="nav-link"><i class="fas fa-cogs"></i><span>@langg('Campaign Setting')</span></a>
        </li>
        @endif
 
        {{-- Campaign Ends --}}
-
-        
        <li class="menu-header">@langg('Manage Reward & Gifts')</li>
        @if(access('gift list'))
        <li class="{{menu('admin.gift.list')}}"><a class="nav-link" href="{{route('admin.gift.list')}}"><i class="fas fa-gift"></i>@langg('Campaigns Gifts')</a></li>
        @endif
-        @if(access('reward list'))
-        <li class="{{menu('admin.reward.list')}}"><a class="nav-link" href="{{route('admin.reward.list')}}"><i class="fas fa-coins"></i>@langg('All Rewards')</a></li>
-        @endif
+
+        @if(access('reward list') || access('reward setting') ) 
+        <li class="nav-item dropdown {{menu('admin.reward*')}}">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-hand-holding-usd"></i> <span>@langg('Manage Rewards')</span></a>
+          <ul class="dropdown-menu">
+
+            @if(access('reward list'))
+            <li class="{{menu('admin.reward.list')}}"><a class="nav-link" href="{{route('admin.reward.list')}}">@langg('All Rewards')</a></li>
+            @endif
+            @if(access('reward setting'))
+             <li class="{{menu('admin.reward.gs')}}"><a class="nav-link" href="{{route('admin.reward.gs')}}">@langg('Reward Setting')</a></li>
+            @endif
+            @if(access('reedem request'))
+            <li class="{{menu('admin.reward.reedem.list')}}"><a class="nav-link" href="{{route('admin.reward.reedem.list')}}">@langg('All Redeem Request')</a></li>
+           @endif
+           
+            
+          </ul>
+        </li>
+         @endif 
+
+        
+      
+      
+    
+
+        
 
 
 
